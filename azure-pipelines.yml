@@ -15,6 +15,11 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
+- script: |
+    npm install
+    npm run build
+  displayName: 'npm install and build'
+
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'SonarCloud'
@@ -24,8 +29,4 @@ steps:
     cliProjectKey: 'borderless-geek_js-e2e-express-server'
     cliProjectName: 'js-e2e-express-server'
     cliSources: '.'
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
-  - task: SonarCloudAnalyze@1
+- task: SonarCloudAnalyze@1
